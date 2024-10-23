@@ -1,0 +1,60 @@
+/**
+* Generate font faces for a font family
+* @param {string} $font-family - The font family name
+* @param {string} $prefix - The prefix for the font family
+* @param {map} $fonts - The font names and weights
+* @param {string} $base-font-path - The base path for the font files
+*
+* Example:
+* @include GenerateFontFaces(
+*   'SF Pro Display',
+*   'SFProDisplay',
+*   (
+*     Black: 900,
+*   ),
+*   '@/assets/fonts/sf-pro-display'
+* );
+ */
+@mixin GenerateFontFaces($font-family, $prefix, $fonts, $base-font-path: '') {
+  @each $font, $weight in $fonts {
+    $font-with-dash: #{$prefix}-#{$font};
+    $font-with-space: #{$font-family} #{$font};
+    $font-with-path: #{$base-font-path}/#{$font-with-dash};
+
+    @font-face {
+      font-family: $font-family;
+      src: url('#{$font-with-path}.eot');
+      src: local('#{$font-with-space}'),
+      local('#{$font-with-dash}'),
+      url('#{$font-with-path}.eot?#iefix') format('embedded-opentype'),
+      url('#{$font-with-path}.woff2') format('woff2'),
+      url('#{$font-with-path}.woff') format('woff'),
+      url('#{$font-with-path}.ttf') format('truetype');
+      font-weight: $weight;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: $font-family;
+      src: url('#{$font-with-path}Italic.eot');
+      src: local('#{$font-with-dash}Italic'),
+      local('#{$font-with-space} Italic'),
+      url('#{$font-with-path}Italic.eot?#iefix') format('embedded-opentype'),
+      url('#{$font-with-path}Italic.woff2') format('woff2'),
+      url('#{$font-with-path}Italic.woff') format('woff'),
+      url('#{$font-with-path}Italic.ttf') format('truetype');
+      font-weight: $weight;
+      font-style: italic;
+    }
+  }
+}
+
+@mixin buttonHover {
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.9;
+  }
+}

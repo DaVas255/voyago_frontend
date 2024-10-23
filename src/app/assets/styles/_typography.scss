@@ -1,0 +1,14 @@
+@import "mixins";
+
+@include GenerateFontFaces('Nekst',
+  'Nekst',
+  (Thin: 100,
+    Light: 300,
+    Regular: 400,
+    Medium: 500,
+    SemiBold: 600,
+    Bold: 700,
+    Black: 900,
+  ),
+  '../styles/fonts'
+);
