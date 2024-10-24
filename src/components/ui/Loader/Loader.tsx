@@ -1,5 +1,5 @@
-import styles from './Loader.module.scss';
+import styles from './Loader.module.scss'
 
 export const Loader = () => {
-	return <span className={styles.loader}></span>;
-};
+  return <span className={styles.loader}></span>
+}
