@@ -2,23 +2,27 @@ import { useEffect, useState, useTransition } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
+import { useDispatch, useSelector } from 'react-redux'
 
 import styles from './ProfileForm.module.scss'
-import { getAccessToken } from '@/service/auth/auth.helper'
 import { getProfile, updateProfile } from '@/service/user.service'
 import { IUser } from '@/app/types/types'
 import { Loader } from '@/components/ui/Loader/Loader'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { logout } from '@/service/auth/auth.service'
+import { AppDispatch, RootState } from '@/app/store/store'
+import { toggleAuthStatus } from '@/app/store/slices/authSlice'
 
 export const ProfileForm = () => {
   const navigate = useNavigate()
   const [profile, setProfile] = useState<IUser>()
   const { register, handleSubmit, reset } = useForm<IUser>()
   const [isPending, startTransition] = useTransition()
+  const dispatch = useDispatch<AppDispatch>()
+  const isAuth = useSelector((state: RootState) => state.auth.isAuth)
 
   useEffect(() => {
-    if (getAccessToken()) {
+    if (isAuth) {
       getProfile().then(data => {
         setProfile(data)
       })
@@ -33,6 +37,7 @@ export const ProfileForm = () => {
     onSuccess() {
       startTransition(() => {
         reset()
+        dispatch(toggleAuthStatus())
         navigate('/auth')
       })
     },

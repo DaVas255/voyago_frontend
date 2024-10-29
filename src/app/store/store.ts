@@ -1,26 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit'
-
-type State = {
-  isAuth: boolean;
-}
-
-type Action = {
-  type: 'changeAuthStatus';
-}
-
-const reducer = (state: State = { isAuth: false }, action: Action) => {
-  switch (action.type) {
-    case 'changeAuthStatus':
-      return {
-        ...state,
-        isAuth: !state.isAuth
-      }
-    default:
-      return state;
-  }
-}
+// src/store/store.ts
+import { configureStore } from '@reduxjs/toolkit';
+import authReducer from './slices/authSlice';
 
 export const store = configureStore({
-  reducer: reducer,
-})
+  reducer: {
+    auth: authReducer,
+  },
+});
 
+// Типы для состояния и диспетчера
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
