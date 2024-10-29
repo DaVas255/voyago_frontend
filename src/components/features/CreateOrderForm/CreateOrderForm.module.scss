@@ -1,0 +1,27 @@
+.create-order {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 2rem;
+  padding: 1.5rem;
+
+  border: 1px solid #fff;
+  border-radius: 1rem;
+
+  &__title {
+    margin-bottom: 2rem;
+
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  &__submit {
+    margin-top: 1rem;
+    background-color: transparent;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}
