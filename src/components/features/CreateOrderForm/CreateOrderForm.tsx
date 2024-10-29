@@ -16,8 +16,6 @@ export const CreateOrderForm = () => {
     formState: { errors },
   } = useForm<IOrder>()
 
-  const inputRef = useRef(null)
-
   const { mutate: mutateOrder, isPending: isOrderPending } = useMutation({
     mutationKey: ['createOrder'],
     mutationFn: (data: IOrder) => createOrder(data),
@@ -38,11 +36,15 @@ export const CreateOrderForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles['create-order']}>
       <h1 className={styles['create-order__title']}>Создать заказ</h1>
-      <input type='text' placeholder='Название' {...register('title', { required: true })} />
-      <input type='text' placeholder='Описание' {...register('description', { required: true })} />
-      <input type='text' placeholder='Локация' {...register('location', { required: true })} />
-      <input type='date' placeholder='Дата начала' {...register('startDate', { required: true })} />
-      <input type='date' placeholder='Дата окончания' {...register('endDate')} />
+      <Input type='text' placeholder='Название' {...register('title', { required: true })} />
+      <Input type='text' placeholder='Описание' {...register('description', { required: true })} />
+      <Input type='text' placeholder='Локация' {...register('location', { required: true })} />
+      <Input type='date' placeholder='Дата начала' {...register('startDate', { required: true })} />
+      <Input
+        type='date'
+        placeholder='Дата окончания'
+        {...register('endDate', { required: true })}
+      />
       <button type='submit' className={styles['create-order__submit']} disabled={isOrderPending}>
         Создать
       </button>
