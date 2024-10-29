@@ -1,14 +1,15 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useMutation } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 import styles from './CreateOrderForm.module.scss'
 import { IOrder } from '@/app/types/types'
 import { createOrder } from '@/service/order.service'
 import { Input } from '@/components/ui/Input/Input'
-import { useRef } from 'react'
 
 export const CreateOrderForm = () => {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -21,6 +22,7 @@ export const CreateOrderForm = () => {
     mutationFn: (data: IOrder) => createOrder(data),
     onSuccess() {
       toast.success('Заказ успешно создан')
+      navigate('/orders')
     },
     onError(error) {
       toast.error('Ошибка создания')
