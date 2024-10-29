@@ -10,12 +10,7 @@ import { Input } from '@/components/ui/Input/Input'
 
 export const CreateOrderForm = () => {
   const navigate = useNavigate()
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<IOrder>()
+  const { register, handleSubmit, reset } = useForm<IOrder>()
 
   const { mutate: mutateOrder, isPending: isOrderPending } = useMutation({
     mutationKey: ['createOrder'],

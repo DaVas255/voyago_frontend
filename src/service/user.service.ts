@@ -34,7 +34,6 @@ export async function updateProfile(data: IUser) {
     if (!request.ok) {
       throw new Error(request.statusText);
     }
-    const response = await request.json();
   } catch (error) {
     console.error(error);
   }

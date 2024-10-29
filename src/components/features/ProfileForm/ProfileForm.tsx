@@ -14,13 +14,7 @@ import { logout } from '@/service/auth/auth.service'
 export const ProfileForm = () => {
   const navigate = useNavigate()
   const [profile, setProfile] = useState<IUser>()
-  const {
-    register,
-    handleSubmit,
-    watch,
-    reset,
-    formState: { errors },
-  } = useForm<IUser>()
+  const { register, handleSubmit, reset } = useForm<IUser>()
   const [isPending, startTransition] = useTransition()
 
   useEffect(() => {
