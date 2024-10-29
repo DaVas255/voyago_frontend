@@ -15,3 +15,12 @@ export interface IUser {
   lastName: string
   age: number
 }
+
+export interface IOrder {
+  id: number
+  title: string
+  description: string
+  location: string
+  startDate: Date
+  endDate?: Date;
+}
