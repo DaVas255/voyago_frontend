@@ -1,0 +1,35 @@
+@import '@/app/assets/styles/mixins.scss';
+
+.orders {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__create {
+    padding: 1rem;
+    margin-bottom: 2rem;
+
+    border-radius: 1rem;
+    background-color: rgb(107, 21, 187);
+    transition: all var(--animation-time);
+    text-align: center;
+
+    @include buttonHover;
+
+    &:disabled {
+      background-color: rgb(107, 21, 187, 0.5);
+      cursor: not-allowed;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__list {
+    padding: 1rem;
+
+    border: 1px solid #fff;
+    border-radius: 0.6rem;
+  }
+}
