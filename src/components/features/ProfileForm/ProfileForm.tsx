@@ -10,6 +10,7 @@ import { Loader } from '@/components/ui/Loader/Loader'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { logout } from '@/service/auth/auth.service'
 import { getAccessToken } from '@/service/auth/auth.helper'
+import { Input } from '@/components/ui/Input/Input'
 
 export const ProfileForm = () => {
   const navigate = useNavigate()
@@ -70,37 +71,22 @@ export const ProfileForm = () => {
 
         <label>
           Email
-          <input type='text' className={styles['profile__input']} value={profile.email} disabled />
+          <Input type='text' value={profile.email} disabled />
         </label>
 
         <label>
           Имя
-          <input
-            type='text'
-            className={styles['profile__input']}
-            {...register('name')}
-            defaultValue={profile.name}
-          />
+          <Input type='text' defaultValue={profile.name} {...register('name')} />
         </label>
 
         <label>
           Фамилия
-          <input
-            type='text'
-            className={styles['profile__input']}
-            {...register('lastName')}
-            defaultValue={profile.lastName}
-          />
+          <Input type='text' defaultValue={profile.lastName} {...register('lastName')} />
         </label>
 
         <label>
           Возраст
-          <input
-            type='number'
-            className={styles['profile__input']}
-            {...register('age')}
-            defaultValue={profile.age}
-          />
+          <Input type='number' defaultValue={profile.age} {...register('age')} />
         </label>
 
         <button

@@ -8,6 +8,7 @@ import clsx from 'clsx'
 import styles from './AuthForm.module.scss'
 import { AuthFormProps, IFormData } from '@/app/types/types'
 import { userAuth } from '@/service/auth/auth.service'
+import { Input } from '@/components/ui/Input/Input'
 
 export function AuthForm({ isLogin, setIsLoginForm }: AuthFormProps) {
   const {
@@ -40,7 +41,6 @@ export function AuthForm({ isLogin, setIsLoginForm }: AuthFormProps) {
     onSuccess() {
       startTransition(() => {
         reset()
-        // dispatch(toggleAuthStatus())
         navigate('/profile')
         toast.success('Добро пожаловать!')
       })
@@ -58,7 +58,7 @@ export function AuthForm({ isLogin, setIsLoginForm }: AuthFormProps) {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.auth__form}>
       <label className={styles.auth__field}>
-        <input
+        <Input
           type='email'
           placeholder='Введите email'
           {...register('email', { required: true })}
@@ -70,7 +70,7 @@ export function AuthForm({ isLogin, setIsLoginForm }: AuthFormProps) {
       </label>
 
       <label className={styles.auth__field}>
-        <input
+        <Input
           type='password'
           placeholder='Введите пароль'
           {...register('password', { required: true })}
@@ -83,7 +83,7 @@ export function AuthForm({ isLogin, setIsLoginForm }: AuthFormProps) {
 
       {!isLogin && (
         <label className={styles.auth__field}>
-          <input
+          <Input
             type='password'
             placeholder='Подтвердите пароль'
             {...register('confirm_password', {
