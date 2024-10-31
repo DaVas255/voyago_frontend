@@ -4,13 +4,10 @@ import { useNavigate } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
 import clsx from 'clsx'
-import { useDispatch } from 'react-redux'
 
 import styles from './AuthForm.module.scss'
 import { AuthFormProps, IFormData } from '@/app/types/types'
 import { userAuth } from '@/service/auth/auth.service'
-import { AppDispatch } from '@/app/store/store'
-import { toggleAuthStatus } from '@/app/store/slices/authSlice'
 
 export function AuthForm({ isLogin, setIsLoginForm }: AuthFormProps) {
   const {
@@ -22,7 +19,6 @@ export function AuthForm({ isLogin, setIsLoginForm }: AuthFormProps) {
   } = useForm<IFormData>()
   const navigate = useNavigate()
   const [isPending, startTransition] = useTransition()
-  const dispatch = useDispatch<AppDispatch>()
 
   const { mutate: mutateLogin, isPending: isLoginPending } = useMutation({
     mutationKey: ['login'],
@@ -30,7 +26,6 @@ export function AuthForm({ isLogin, setIsLoginForm }: AuthFormProps) {
     onSuccess() {
       startTransition(() => {
         reset()
-        dispatch(toggleAuthStatus())
         navigate('/profile')
       })
     },
@@ -45,7 +40,7 @@ export function AuthForm({ isLogin, setIsLoginForm }: AuthFormProps) {
     onSuccess() {
       startTransition(() => {
         reset()
-        dispatch(toggleAuthStatus())
+        // dispatch(toggleAuthStatus())
         navigate('/profile')
         toast.success('Добро пожаловать!')
       })

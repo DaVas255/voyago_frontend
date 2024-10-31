@@ -5,7 +5,9 @@ interface AuthState {
   isAuth: boolean;
 }
 
-const initialState: AuthState = { isAuth: false };
+const initialAuthState = localStorage.getItem('isAuth') === 'true';
+
+const initialState: AuthState = { isAuth: initialAuthState };
 
 const authSlice = createSlice({
   name: 'auth',
@@ -13,9 +15,11 @@ const authSlice = createSlice({
   reducers: {
     toggleAuthStatus: (state) => {
       state.isAuth = !state.isAuth;
+      localStorage.setItem('isAuth', state.isAuth.toString());
     },
     setAuthStatus: (state, action: PayloadAction<boolean>) => {
       state.isAuth = action.payload;
+      localStorage.setItem('isAuth', action.payload.toString());
     },
   },
 });
