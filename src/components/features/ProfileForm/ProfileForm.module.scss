@@ -1,5 +1,7 @@
+@import '@/app/assets/styles/mixins.scss';
+
 .profile {
-  width: 100%;
+  width: 50%;
   height: 100%;
   position: relative;
 
@@ -10,11 +12,9 @@
   row-gap: 1rem;
 
   &__logout {
-    position: absolute;
-    right: 0;
-    top: 0;
-
     background-color: transparent;
+
+    @include buttonHover;
   }
 
   &__form {
@@ -50,5 +50,7 @@
 
   &__submit {
     background-color: transparent;
+
+    @include buttonHover;
   }
 }
