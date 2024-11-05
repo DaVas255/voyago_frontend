@@ -21,6 +21,8 @@ export interface IOrder {
   title: string
   description: string
   location: string
-  startDate: Date
-  endDate?: Date;
+  startDate: string
+  endDate: string;
+  isCompleted: boolean
+  user: { name: string }
 }
