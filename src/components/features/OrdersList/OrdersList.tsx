@@ -14,11 +14,16 @@ export const OrdersList = () => {
 
   useEffect(() => {
     if (getAccessToken()) {
-      getOrders().then(orders => {
-        setOrders(orders)
-        console.log(orders)
-        setIsLoading(false)
-      })
+      setIsLoading(true) // Начинаем загрузку
+      getOrders()
+        .then(orders => {
+          setOrders(orders)
+          setIsLoading(false)
+        })
+        .catch(error => {
+          console.error('Ошибка загрузки заказов:', error)
+          setIsLoading(false)
+        })
     } else {
       navigate('/auth')
     }
@@ -33,7 +38,12 @@ export const OrdersList = () => {
       </NavLink>
       <div className={styles.orders__list}>
         {orders.length > 0 ? (
-          orders.map(order => <div key={order.id}>{order.title}</div>)
+          orders.map(order => (
+            <div key={order.id} className={styles.orders__item}>
+              <div>{order.title}</div>
+              <div>{order.user.name}</div>
+            </div>
+          ))
         ) : (
           <p>No orders available</p>
         )}

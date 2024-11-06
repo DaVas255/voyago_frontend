@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import clsx from 'clsx'
 
 import styles from './MyOrders.module.scss'
@@ -8,7 +8,13 @@ import { getOrdersByUser, updateOrder } from '@/service/order.service'
 export const MyOrders = () => {
   const [orders, setOrders] = useState<IOrder[]>([])
 
-  getOrdersByUser().then(orders => setOrders(orders))
+  useEffect(() => {
+    getOrdersByUser()
+      .then(orders => {
+        setOrders(orders)
+      })
+      .catch(error => console.error(error))
+  }, [])
 
   return (
     <div className={styles.myOrders}>

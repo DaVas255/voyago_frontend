@@ -20,9 +20,9 @@ export const ProfileForm = () => {
 
   useEffect(() => {
     if (getAccessToken()) {
-      getProfile().then(data => {
-        setProfile(data)
-      })
+      getProfile()
+        .then(data => setProfile(data))
+        .catch(error => console.error(error))
     } else {
       navigate('/auth')
     }
