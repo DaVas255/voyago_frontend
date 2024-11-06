@@ -6,27 +6,33 @@ import { ProfilePage } from './ProfilePage'
 import { AuthPage } from './AuthPage'
 import { OrdersPage } from './OrdersPage'
 import { CreateOrderPage } from './CreateOrderPage'
+import { MainLayout } from '@/components/layouts/MainLayout/MainLayout'
 
 export const router = createBrowserRouter([
   {
-    path: '/',
-    element: <HomePage />,
+    element: <MainLayout />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: '/profile',
-    element: <ProfilePage />,
-  },
-  {
-    path: '/auth',
-    element: <AuthPage />,
-  },
-  {
-    path: '/orders',
-    element: <OrdersPage />,
-  },
-  {
-    path: '/orders/new',
-    element: <CreateOrderPage />,
+    children: [
+      {
+        path: '/',
+        element: <HomePage />,
+      },
+      {
+        path: 'profile',
+        element: <ProfilePage />,
+      },
+      {
+        path: 'auth',
+        element: <AuthPage />,
+      },
+      {
+        path: 'orders',
+        element: <OrdersPage />,
+      },
+      {
+        path: 'orders/new',
+        element: <CreateOrderPage />,
+      },
+    ],
   },
 ])
