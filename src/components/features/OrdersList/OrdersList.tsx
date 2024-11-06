@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import styles from './OrdersList.module.scss'
 import { Loader } from '@/components/ui/Loader/Loader'
 import { getOrders } from '@/service/order.service'
 import { IOrder } from '@/app/types/types'
 import { getAccessToken } from '@/service/auth/auth.helper'
+import { Button } from '@/components/ui/button/Button'
 
 export const OrdersList = () => {
   const [orders, setOrders] = useState<IOrder[]>([])
@@ -33,9 +34,12 @@ export const OrdersList = () => {
 
   return (
     <div className={styles.orders}>
-      <NavLink to={'/orders/new'} className={styles.orders__create}>
-        Create order
-      </NavLink>
+      <Button
+        type='button'
+        name='Create order'
+        className={styles.orders__create}
+        onClick={() => navigate('/orders/new')}
+      />
       <div className={styles.orders__list}>
         {orders.length > 0 ? (
           orders.map(order => (
