@@ -1,4 +1,5 @@
 .create-order {
+  width: 35%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,6 +15,20 @@
     text-align: center;
     font-size: 2rem;
     font-weight: 600;
+  }
+
+  &__dates {
+    display: flex;
+    justify-content: space-around;
+    column-gap: 2rem;
+
+    & input {
+      width: 35%;
+
+      &::-webkit-calendar-picker-indicator {
+        filter: invert(100%);
+      }
+    }
   }
 
   &__submit {
