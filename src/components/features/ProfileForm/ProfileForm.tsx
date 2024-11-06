@@ -11,6 +11,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { logout } from '@/service/auth/auth.service'
 import { getAccessToken } from '@/service/auth/auth.helper'
 import { Input } from '@/components/ui/Input/Input'
+import { Button } from '@/components/ui/button/Button'
 
 export const ProfileForm = () => {
   const navigate = useNavigate()
@@ -59,13 +60,6 @@ export const ProfileForm = () => {
 
   return profile ? (
     <div className={styles['profile']}>
-      <button
-        className={styles['profile__logout']}
-        onClick={() => mutateLogout()}
-        disabled={isProfilePending || isLogoutPending || isPending}
-      >
-        Выйти
-      </button>
       <form onSubmit={handleSubmit(onSubmit)} className={styles['profile__form']}>
         <h2 className={styles['profile__title']}>Hello {profile.name}!</h2>
 
@@ -89,14 +83,19 @@ export const ProfileForm = () => {
           <Input type='number' defaultValue={profile.age} {...register('age')} />
         </label>
 
-        <button
+        <Button
           type='submit'
-          className={styles['profile__submit']}
+          name='Сохранить'
+          className={styles['profile__close']}
           disabled={isProfilePending || isLogoutPending || isPending}
-        >
-          Сохранить
-        </button>
+        />
       </form>
+      <Button
+        name='Выйти'
+        className={styles['profile__logout']}
+        onClick={() => mutateLogout()}
+        disabled={isProfilePending || isLogoutPending || isPending}
+      />
     </div>
   ) : (
     <Loader />

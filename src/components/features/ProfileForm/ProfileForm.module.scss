@@ -1,5 +1,3 @@
-@import '@/app/assets/styles/mixins.scss';
-
 .profile {
   width: 50%;
   height: 100%;
@@ -13,12 +11,16 @@
 
   @media screen and (max-width: 768px) {
     width: 100%;
+    height: 70%;
   }
 
   &__logout {
-    background-color: transparent;
+    @media screen and (max-width: 768px) {
+      position: absolute !important;
+      top: 0;
+      right: 0;
+    }
 
-    @include buttonHover;
   }
 
   &__form {
@@ -54,11 +56,5 @@
       -webkit-appearance: none;
       margin: 0;
     }
-  }
-
-  &__submit {
-    background-color: transparent;
-
-    @include buttonHover;
   }
 }
