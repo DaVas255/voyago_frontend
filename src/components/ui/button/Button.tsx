@@ -7,6 +7,7 @@ interface ButtonProps {
   name: string
   disabled?: boolean
   className?: string
+  onClick?: () => void
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ className, ...props }, ref) => {
