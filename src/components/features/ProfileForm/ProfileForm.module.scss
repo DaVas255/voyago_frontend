@@ -11,6 +11,10 @@
   align-items: center;
   row-gap: 1rem;
 
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+
   &__logout {
     background-color: transparent;
 
@@ -28,6 +32,10 @@
   &__title {
     font-size: 3rem;
     text-align: center;
+
+    @media screen and (max-width: 768px) {
+      font-size: 2rem;
+    }
   }
 
   &__input {
