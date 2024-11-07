@@ -1,13 +1,16 @@
 .header {
-  padding: 1.5rem 0;
   height: 10%;
+  padding: var(--padding);
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
+  background-color: #fff;
+  border-bottom: 1px solid #ECECF4;
+
   &__logo {
-    width: 10rem;
+    width: 12rem;
   }
 
   &__nav {
@@ -18,9 +21,12 @@
   &__nav-item {
     border-bottom: 2px solid transparent;
 
+    font-weight: 500;
+    font-size: 1.7rem;
+
     &_active {
-      color: #3E68FF;
-      border-color: #3E68FF;
+      color: var(--main-complementary-color);
+      border-color: var(--main-complementary-color);
     }
   }
 
@@ -28,7 +34,7 @@
     width: 2.8rem;
 
     &_active {
-      color: #3E68FF;
+      color: var(--main-complementary-color);
     }
   }
 }
