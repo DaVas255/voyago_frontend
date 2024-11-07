@@ -7,14 +7,22 @@ import { getOrdersByUser, updateOrder } from '@/service/order.service'
 
 export const MyOrders = () => {
   const [orders, setOrders] = useState<IOrder[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    setIsLoading(true)
     getOrdersByUser()
       .then(orders => {
         setOrders(orders)
+        setIsLoading(false)
       })
-      .catch(error => console.error(error))
+      .catch(error => {
+        console.error('Ошибка загрузки заказов:', error)
+        setIsLoading(false)
+      })
   }, [])
+
+  if (isLoading) return ''
 
   return (
     <div className={styles.myOrders}>
