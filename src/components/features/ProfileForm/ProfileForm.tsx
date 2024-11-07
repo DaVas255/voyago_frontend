@@ -12,6 +12,7 @@ import { logout } from '@/service/auth/auth.service'
 import { getAccessToken } from '@/service/auth/auth.helper'
 import { Input } from '@/components/ui/Input/Input'
 import { Button } from '@/components/ui/button/Button'
+import ExitDoorIcon from '@/app/assets/icons/ExitDoor.svg?react'
 
 export const ProfileForm = () => {
   const navigate = useNavigate()
@@ -59,43 +60,38 @@ export const ProfileForm = () => {
   const onSubmit: SubmitHandler<IUser> = data => mutateProfile(data)
 
   return profile ? (
-    <div className={styles['profile']}>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles['profile__form']}>
-        <h2 className={styles['profile__title']}>Hello {profile.name}!</h2>
-
-        <label>
-          Email
-          <Input type='text' value={profile.email} disabled />
-        </label>
-
-        <label>
-          Имя
-          <Input type='text' defaultValue={profile.name} {...register('name')} />
-        </label>
-
-        <label>
-          Фамилия
-          <Input type='text' defaultValue={profile.lastName} {...register('lastName')} />
-        </label>
-
-        <label>
-          Возраст
-          <Input type='number' defaultValue={profile.age} {...register('age')} />
-        </label>
-
+    <div className={styles.profile}>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.profile__form}>
+        <h2 className={styles.profile__title}>Привет {profile.name}!</h2>
+        <Input type='text' value={profile.email} disabled />
+        <Input type='text' placeholder='Имя' defaultValue={profile.name} {...register('name')} />
+        <Input
+          type='text'
+          placeholder='Фамилия'
+          defaultValue={profile.lastName}
+          {...register('lastName')}
+        />
+        <Input
+          type='number'
+          placeholder='Возраст'
+          defaultValue={profile.age}
+          {...register('age')}
+        />
         <Button
           type='submit'
           name='Сохранить'
-          className={styles['profile__close']}
+          background
           disabled={isProfilePending || isLogoutPending || isPending}
         />
       </form>
-      <Button
-        name='Выйти'
-        className={styles['profile__logout']}
+      <button
+        className={styles.profile__logout}
         onClick={() => mutateLogout()}
         disabled={isProfilePending || isLogoutPending || isPending}
-      />
+      >
+        <ExitDoorIcon />
+        Выйти
+      </button>
     </div>
   ) : (
     <Loader />
