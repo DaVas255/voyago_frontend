@@ -21,7 +21,7 @@ export const Header = () => {
             })
           }
         >
-          Home
+          Главная
         </NavLink>
 
         <NavLink
@@ -32,7 +32,7 @@ export const Header = () => {
             })
           }
         >
-          Orders
+          Заказы
         </NavLink>
       </nav>
       <NavLink

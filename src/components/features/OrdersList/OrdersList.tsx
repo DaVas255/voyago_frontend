@@ -36,7 +36,7 @@ export const OrdersList = () => {
     <div className={styles.orders}>
       <Button
         type='button'
-        name='Create order'
+        name='Создать новый заказ'
         className={styles.orders__create}
         onClick={() => navigate('/orders/new')}
       />
