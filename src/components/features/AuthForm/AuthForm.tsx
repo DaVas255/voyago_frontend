@@ -9,6 +9,7 @@ import styles from './AuthForm.module.scss'
 import { AuthFormProps, IFormData } from '@/app/types/types'
 import { userAuth } from '@/service/auth/auth.service'
 import { Input } from '@/components/ui/Input/Input'
+import { Button } from '@/components/ui/button/Button'
 
 export function AuthForm({ isLogin, setIsLoginForm }: AuthFormProps) {
   const {
@@ -57,53 +58,37 @@ export function AuthForm({ isLogin, setIsLoginForm }: AuthFormProps) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.auth__form}>
-      <label className={styles.auth__field}>
-        <Input
-          type='email'
-          placeholder='Введите email'
-          {...register('email', { required: true })}
-          className={clsx(styles['auth__input'], errors.email && styles['auth__input_error'])}
-        />
-        {errors.email && (
-          <span className={styles['auth__label-error']}>This field is required</span>
-        )}
-      </label>
+      <h1 className={styles.auth__title}>Добро пожаловать</h1>
+      <Input
+        type='email'
+        placeholder='Введите email'
+        {...register('email', { required: true })}
+        error={errors.email}
+        errorText='Обязательное поле'
+      />
 
-      <label className={styles.auth__field}>
-        <Input
-          type='password'
-          placeholder='Введите пароль'
-          {...register('password', { required: true })}
-          className={clsx(styles['auth__input'], errors.password && styles['auth__input_error'])}
-        />
-        {errors.password && (
-          <span className={styles['auth__label-error']}>This field is required</span>
-        )}
-      </label>
+      <Input
+        type='password'
+        placeholder='Введите пароль'
+        {...register('password', { required: true })}
+        error={errors.password}
+        errorText='Обязательное поле'
+      />
 
       {!isLogin && (
-        <label className={styles.auth__field}>
-          <Input
-            type='password'
-            placeholder='Подтвердите пароль'
-            {...register('confirm_password', {
-              required: true,
-              validate: value => value === watch('password'),
-            })}
-            className={clsx(
-              styles['auth__input'],
-              errors.confirm_password && styles['auth__input_error'],
-            )}
-          />
-          {errors.confirm_password && (
-            <span className={styles['auth__label-error']}>Пароли не совпадают</span>
-          )}
-        </label>
+        <Input
+          type='password'
+          placeholder='Подтвердите пароль'
+          {...register('confirm_password', {
+            required: true,
+            validate: value => value === watch('password'),
+          })}
+          error={errors.confirm_password}
+          errorText='Обязательное поле'
+        />
       )}
 
-      <button type='submit' className={clsx(styles['auth__submit'])} disabled={isLoadingAuthForm}>
-        {isLogin ? 'Войти' : 'Зарегистрироваться'}
-      </button>
+      <Button type='submit' name='Войти' background disabled={isLoadingAuthForm} />
 
       {isLogin ? (
         <p>
