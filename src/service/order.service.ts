@@ -4,7 +4,7 @@ import { getAccessToken } from "./auth/auth.helper";
 
 export async function getOrders() {
   try {
-    const response = await fetch(API_URL + `/orders`, {
+    const response = await fetch(API_URL + `/orders/active`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
