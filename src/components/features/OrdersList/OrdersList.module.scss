@@ -8,31 +8,51 @@
     max-width: 35rem;
     width: 100%;
     margin-bottom: 2rem;
-
-    &:disabled {
-      background-color: rgb(107, 21, 187, 0.5);
-      cursor: not-allowed;
-
-      &:hover {
-        opacity: 1;
-      }
-    }
   }
 
   &__list {
     max-width: 112rem;
     width: 100%;
     height: 75vh;
-    padding: 1rem;
 
-    border: 1px solid #fff;
-    border-radius: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    padding: 1rem;
 
     overflow-y: auto;
   }
 
   &__item {
-    padding: 0.5rem;
-    border-bottom: 1px solid #fff;
+    position: relative;
+    padding: 2rem;
+
+    background-color: #fff;
+    border-radius: var(--border-radius);
+  }
+
+  &__title {
+    margin-bottom: 0.5rem;
+
+    font-size: 2.8rem;
+    font-weight: 600;
+  }
+
+  &__name {
+    margin-bottom: 0.6rem;
+    font-size: 1.7rem;
+  }
+
+  &__label {
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  &__author {
+    position: absolute;
+    top: 1rem;
+    right: 4rem;
+
+    font-style: italic;
   }
 }
