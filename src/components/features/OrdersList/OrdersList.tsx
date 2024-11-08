@@ -15,7 +15,7 @@ export const OrdersList = () => {
 
   useEffect(() => {
     if (getAccessToken()) {
-      setIsLoading(true) // Начинаем загрузку
+      setIsLoading(true)
       getOrders()
         .then(orders => {
           setOrders(orders)
@@ -45,6 +45,8 @@ export const OrdersList = () => {
           orders.map(order => (
             <div key={order.id} className={styles.orders__item}>
               <div>{order.title}</div>
+              <div>{order.description}</div>
+              <div>{order.location}</div>
               <div>{order.user.name}</div>
             </div>
           ))

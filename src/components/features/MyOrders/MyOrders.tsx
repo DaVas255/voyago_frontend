@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import styles from './MyOrders.module.scss'
 import { IOrder } from '@/app/types/types'
 import { getOrdersByUser, updateOrder } from '@/service/order.service'
+import { Button } from '@/components/ui/button/Button'
 
 export const MyOrders = () => {
   const [orders, setOrders] = useState<IOrder[]>([])
@@ -30,31 +31,41 @@ export const MyOrders = () => {
       <div className={styles.myOrders__list}>
         {orders &&
           orders.map(order => (
-            <div
-              key={order.id}
-              className={clsx(
-                styles['myOrders__order'],
-                order.isCompleted && styles['myOrders__order_closed'],
-              )}
-            >
+            <div key={order.id} className={styles.myOrders__order}>
               <div className={styles['myOrders__order-title']}>{order.title}</div>
-              <div className={styles['myOrders__order-description']}>
-                Описание: {order.description}
+              <div className={styles['myOrders__order-name']}>
+                <span className={styles['myOrders__order-label']}>Описание: </span>
+                {order.description}
               </div>
-              <div className={styles['myOrders__order-location']}>Локация: {order.location}</div>
-              <div className={styles['myOrders__order-date']}>
-                Дата: {order.startDate.split('T')[0]} - {order.endDate.split('T')[0]}
+              <div className={styles['myOrders__order-name']}>
+                <span className={styles['myOrders__order-label']}>Локация: </span>
+                {order.location}
+              </div>
+              <div className={styles['myOrders__order-name']}>
+                <span className={styles['myOrders__order-label']}>Дата: </span>
+                {order.startDate.split('T')[0]} - {order.endDate.split('T')[0]}
               </div>
               {order.isCompleted && (
-                <div className={styles['myOrders__order-status']}>Статус: Завершен</div>
+                <div className={styles['myOrders__order-name']}>
+                  <span className={styles['myOrders__order-label']}>Статус: </span>
+                  Завершен
+                </div>
               )}
+
               {!order.isCompleted && (
-                <button
-                  className={styles['myOrders__order-button']}
-                  onClick={() => updateOrder(order.id)}
-                >
-                  Завершить
-                </button>
+                <div className={styles['myOrders__order-buttons']}>
+                  <Button
+                    className={styles['myOrders__order-button']}
+                    name='Завершить'
+                    background
+                    onClick={() => updateOrder(order.id)}
+                  />
+                  <Button
+                    className={styles['myOrders__order-button']}
+                    name='Изменить'
+                    onClick={() => alert('Не реализовано')}
+                  />
+                </div>
               )}
             </div>
           ))}

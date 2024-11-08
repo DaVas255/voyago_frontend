@@ -1,5 +1,6 @@
 .header {
-  height: 10%;
+  box-sizing: border-box;
+  height: 8%;
   padding: var(--padding);
 
   display: flex;
@@ -11,6 +12,10 @@
 
   &__logo {
     width: 12rem;
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   }
 
   &__nav {
