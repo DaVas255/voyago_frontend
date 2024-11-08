@@ -36,7 +36,7 @@ export const CreateOrderForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} className={styles['create-order']}>
       <h1 className={styles['create-order__title']}>Создать заказ</h1>
       <Input type='text' placeholder='Название' {...register('title', { required: true })} />
-      <TextArea placeholder='Описание' {...register('description', { required: true })} />
+      <TextArea placeholder='Описание' rows={5} {...register('description', { required: true })} />
       <Input type='text' placeholder='Локация' {...register('location', { required: true })} />
       <div className={styles['create-order__dates']}>
         <Input
@@ -55,6 +55,7 @@ export const CreateOrderForm = () => {
         type='submit'
         className={styles['create-order__submit']}
         name='Создать'
+        background
         disabled={isOrderPending}
       />
     </form>
