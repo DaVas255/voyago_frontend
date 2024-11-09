@@ -62,7 +62,7 @@ export const ProfileForm = () => {
   return profile ? (
     <div className={styles.profile}>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.profile__form}>
-        <h2 className={styles.profile__title}>Привет {profile.name}!</h2>
+        <h2 className={styles.profile__title}>Привет, {profile.name}!</h2>
         <Input type='text' value={profile.email} disabled />
         <Input type='text' placeholder='Имя' defaultValue={profile.name} {...register('name')} />
         <Input
