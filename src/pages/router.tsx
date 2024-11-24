@@ -14,10 +14,6 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/',
-        element: <HomePage />,
-      },
-      {
         path: 'profile',
         element: <ProfilePage />,
       },
@@ -34,5 +30,9 @@ export const router = createBrowserRouter([
         element: <CreateOrderPage />,
       },
     ],
+  },
+  {
+    path: '/',
+    element: <HomePage />,
   },
 ])
