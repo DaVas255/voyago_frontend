@@ -1,6 +1,7 @@
 import { API_URL } from "@/app/constants";
 import { IOrder } from "@/app/types/types";
 import { getAccessToken } from "./auth/auth.helper";
+import { useNavigate } from "react-router-dom";
 
 export async function getOrders() {
   try {
@@ -11,9 +12,10 @@ export async function getOrders() {
         Authorization: `Bearer ${getAccessToken()}`,
       },
     });
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
+    if (response.status === 401) window.location.href = "/auth";
+
+    if (!response.ok) throw new Error(response.statusText);
+
     const data = await response.json();
     return data;
   } catch (error) {

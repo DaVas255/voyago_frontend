@@ -11,9 +11,10 @@ export async function getProfile() {
         Authorization: `Bearer ${getAccessToken()}`,
       },
     });
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
+    if (response.status === 401) window.location.href = "/auth";
+
+    if (!response.ok) throw new Error(response.statusText);
+
     const data = await response.json();
     return data;
   } catch (error) {
@@ -23,7 +24,7 @@ export async function getProfile() {
 
 export async function updateProfile(data: IUser) {
   try {
-    const request = await fetch(API_URL + `/user/profile`, {
+    const response = await fetch(API_URL + `/user/profile`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -31,9 +32,11 @@ export async function updateProfile(data: IUser) {
       },
       body: JSON.stringify(data),
     });
-    if (!request.ok) {
-      throw new Error(request.statusText);
-    }
+
+    if (response.status === 401) window.location.href = "/auth";
+
+    if (!response.ok) throw new Error(response.statusText);
+
   } catch (error) {
     console.error(error);
   }
