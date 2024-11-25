@@ -88,7 +88,12 @@ export function AuthForm({ isLogin, setIsLoginForm }: AuthFormProps) {
         />
       )}
 
-      <Button type='submit' name='Войти' background disabled={isLoadingAuthForm} />
+      <Button
+        type='submit'
+        name={isLogin ? 'Войти' : 'Зарегистрироваться'}
+        background
+        disabled={isLoadingAuthForm}
+      />
 
       {isLogin ? (
         <p>
