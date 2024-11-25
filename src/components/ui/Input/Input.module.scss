@@ -11,6 +11,7 @@
   cursor: text;
 
   &-container {
+    position: relative;
     width: 100%;
   }
 
@@ -53,4 +54,19 @@
     font-size: 1.2rem;
   }
 
+}
+
+.toggle-password {
+  position: absolute;
+  top: 24%;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #888;
+}
+
+.toggle-password:hover {
+  color: #333;
 }
