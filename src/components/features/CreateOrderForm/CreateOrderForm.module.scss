@@ -1,21 +1,53 @@
 .create-order {
-  width: 35%;
+  width: 60%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  row-gap: 2rem;
-  padding: 1.5rem;
-
-  background-color: #fff;
-  border-radius: var(--border-radius);
-  border: 1px solid #E7E8EB;
+  gap: 2rem;
 
   @media screen and (max-width: 1200px) {
-    width: 60%;
+    width: 80%;
   }
 
   @media screen and (max-width: 768px) {
     width: 100%;
+    flex-direction: column;
+  }
+
+  &__interests {
+    width: 25%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    border: 1px solid #E7E8EB;
+
+    overflow: auto;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      flex-direction: row;
+      column-gap: 1rem;
+    }
+  }
+
+  &__wrapper {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 2rem;
+    padding: 1.5rem;
+
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    border: 1px solid #E7E8EB;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      order: -1;
+    }
   }
 
   &__title {

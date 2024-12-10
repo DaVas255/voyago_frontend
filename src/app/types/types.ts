@@ -25,4 +25,12 @@ export interface IOrder {
   endDate: string;
   isCompleted: boolean
   user: { name: string }
+  interests: IInterest
+}
+
+export interface IInterest {
+  join(arg0: string): import("react").ReactNode;
+  map(arg0: (interest: any) => number): IInterest;
+  id: number
+  name: string
 }

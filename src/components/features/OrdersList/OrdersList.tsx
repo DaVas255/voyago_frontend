@@ -63,10 +63,14 @@ export const OrdersList = () => {
                 <span className={styles.orders__label}>Дата: </span>
                 {order.startDate.split('T')[0]} - {order.endDate.split('T')[0]}
               </div>
+              <div className={styles.orders__name}>
+                <span className={styles.orders__label}>Интересы </span>
+                {order.interests.map(interest => interest.name).join(', ')}
+              </div>
             </div>
           ))
         ) : (
-          <p>No orders available</p>
+          <p>Пока что нет доступных заказов</p>
         )}
       </div>
     </div>
