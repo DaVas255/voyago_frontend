@@ -34,6 +34,16 @@ export const Header = () => {
         >
           Заказы
         </NavLink>
+        <NavLink
+          to={'/messenger'}
+          className={({ isActive }) =>
+            cn(styles['header__nav-item'], {
+              [styles['header__nav-item_active']]: isActive,
+            })
+          }
+        >
+          Мессенджер
+        </NavLink>
       </nav>
       <NavLink
         to={'/profile'}

@@ -7,6 +7,7 @@ import { AuthPage } from './AuthPage'
 import { OrdersPage } from './OrdersPage'
 import { CreateOrderPage } from './CreateOrderPage'
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout'
+import { MessengerPage } from './MessengerPage'
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: 'orders/new',
         element: <CreateOrderPage />,
+      },
+      {
+        path: '/messenger',
+        element: <MessengerPage />,
       },
     ],
   },
