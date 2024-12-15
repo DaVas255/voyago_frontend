@@ -1,0 +1,17 @@
+.filter {
+
+  &__interest {
+    margin: 1rem 0;
+    max-height: 50rem;
+    overflow: auto;
+  }
+
+  &__date {
+    margin-bottom: 1rem;
+  }
+
+  &__button {
+    margin-top: 1rem;
+  }
+
+}

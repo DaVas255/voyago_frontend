@@ -15,10 +15,11 @@ interface InputProps {
   error?: FieldError
   errorText?: string
   className?: string
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ type, placeholder, error, errorText, disabled, ...props }, ref) => {
+  ({ type, placeholder, error, errorText, disabled, onChange, ...props }, ref) => {
     const [isPasswordVisible, setPasswordVisible] = useState(false)
 
     const togglePasswordVisibility = () => {
@@ -32,6 +33,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           placeholder={placeholder}
           className={clsx(styles.input, error && styles['input-error'])}
           disabled={disabled}
+          onChange={onChange}
           ref={ref}
           {...props}
         />

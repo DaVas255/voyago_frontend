@@ -1,9 +1,28 @@
 .orders {
-  width: 50%;
+  width: 75%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  column-gap: 3rem;
+
+  &__filters {
+    width: 20%;
+    padding: 2.5rem;
+    background-color: #fff;
+    border-radius: var(--border-radius);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__header {
+    width: 100%;
+    display: flex;
+    column-gap: 2rem;
+    justify-content: space-between;
+  }
 
   &__create {
     max-width: 35rem;

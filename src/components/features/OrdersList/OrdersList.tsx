@@ -62,46 +62,52 @@ export const OrdersList = () => {
 
   return (
     <div className={styles.orders}>
-      <Button
-        type='button'
-        name='Создать новый заказ'
-        className={styles.orders__create}
-        onClick={() => navigate('/orders/new')}
-      />
-      <OrdersSearch onSearch={handleSearch} />
-      <OrdersFilter onFilterChange={handleFilterChange} />
-      <div className={styles.orders__list}>
-        {filteredOrders.length > 0 ? (
-          filteredOrders.map(order => (
-            <div key={order.id} className={styles.orders__item}>
+      <div className={styles.orders__filters}>
+        <OrdersFilter onFilterChange={handleFilterChange} />
+      </div>
+      <div className={styles.orders__content}>
+        <div className={styles.orders__header}>
+          <OrdersSearch onSearch={handleSearch} />
+          <Button
+            type='button'
+            name='Создать новый заказ'
+            className={styles.orders__create}
+            onClick={() => navigate('/orders/new')}
+          />
+        </div>
+        <div className={styles.orders__list}>
+          {filteredOrders.length > 0 ? (
+            filteredOrders.map(order => (
               <div key={order.id} className={styles.orders__item}>
-                <div className={styles.orders__title}>{order.title}</div>
-                <div className={styles.orders__name}>
-                  <span className={styles.orders__label}>Описание: </span>
-                  {order.description}
-                </div>
-                <div className={styles.orders__name}>
-                  <span className={styles.orders__label}>Локация: </span>
-                  {order.location}
-                </div>
-                <div className={clsx(styles.orders__name, styles.orders__author)}>
-                  <span className={styles.orders__label}>Автор: </span>
-                  {order.user.name}
-                </div>
-                <div className={styles.orders__name}>
-                  <span className={styles.orders__label}>Дата: </span>
-                  {order.startDate.split('T')[0]} - {order.endDate.split('T')[0]}
-                </div>
-                <div className={styles.orders__name}>
-                  <span className={styles.orders__label}>Интересы </span>
-                  {order.interests.map(interest => interest.name).join(', ')}
+                <div key={order.id} className={styles.orders__item}>
+                  <div className={styles.orders__title}>{order.title}</div>
+                  <div className={styles.orders__name}>
+                    <span className={styles.orders__label}>Описание: </span>
+                    {order.description}
+                  </div>
+                  <div className={styles.orders__name}>
+                    <span className={styles.orders__label}>Локация: </span>
+                    {order.location}
+                  </div>
+                  <div className={clsx(styles.orders__name, styles.orders__author)}>
+                    <span className={styles.orders__label}>Автор: </span>
+                    {order.user.name}
+                  </div>
+                  <div className={styles.orders__name}>
+                    <span className={styles.orders__label}>Дата: </span>
+                    {order.startDate.split('T')[0]} - {order.endDate.split('T')[0]}
+                  </div>
+                  <div className={styles.orders__name}>
+                    <span className={styles.orders__label}>Интересы </span>
+                    {order.interests.map(interest => interest.name).join(', ')}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
-        ) : (
-          <p>Нет доступных заказов</p>
-        )}
+            ))
+          ) : (
+            <p>Нет доступных заказов</p>
+          )}
+        </div>
       </div>
     </div>
   )
